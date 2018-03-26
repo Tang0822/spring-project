@@ -1,5 +1,8 @@
 package com.jftang3.auth.security;
 
+import com.jftang3.auth.dto.ResponseDto;
+import com.jftang3.auth.dto.StateDto;
+import com.jftang3.auth.util.ResponseUtil;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.web.authentication.logout.LogoutSuccessHandler;
 import org.springframework.security.web.authentication.logout.SimpleUrlLogoutSuccessHandler;
@@ -13,6 +16,6 @@ public class CustomLogoutSuccessHandler extends SimpleUrlLogoutSuccessHandler im
 
     @Override
     public void onLogoutSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
-        super.onLogoutSuccess(request, response, authentication);
+        ResponseUtil.setResponseContent(response, new ResponseDto(StateDto.SUCCESS, "登出成功"));
     }
 }

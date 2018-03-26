@@ -1,5 +1,8 @@
 package com.jftang3.auth.security;
 
+import com.jftang3.auth.dto.ResponseDto;
+import com.jftang3.auth.dto.StateDto;
+import com.jftang3.auth.util.ResponseUtil;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.authentication.SimpleUrlAuthenticationFailureHandler;
 
@@ -12,6 +15,6 @@ public class CustomAuthenticationFailureHandler extends SimpleUrlAuthenticationF
 
     @Override
     public void onAuthenticationFailure(HttpServletRequest request, HttpServletResponse response, AuthenticationException exception) throws IOException, ServletException {
-        super.onAuthenticationFailure(request, response, exception);
+        ResponseUtil.setResponseContent(response, new ResponseDto(StateDto.FORBIDDEN, exception));
     }
 }
