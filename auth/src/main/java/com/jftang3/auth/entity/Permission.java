@@ -1,6 +1,5 @@
 package com.jftang3.auth.entity;
 
-
 import lombok.Getter;
 import lombok.Setter;
 

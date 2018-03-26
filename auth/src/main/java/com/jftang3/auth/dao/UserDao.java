@@ -3,8 +3,13 @@ package com.jftang3.auth.dao;
 import com.jftang3.auth.entity.User;
 import org.apache.ibatis.annotations.*;
 
+import java.util.List;
+
 @Mapper
 public interface UserDao {
+
+    @Select("SELECT * FROM t_user")
+    List<User> getAllUser();
 
     @Select("SELECT * FROM t_user WHERE username = #{name}")
     User getUserByName(@Param("name") String username);

@@ -8,6 +8,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
 @RestController
 public class AuthController {
 
@@ -23,7 +25,8 @@ public class AuthController {
 
     @RequestMapping("/home")
     public ResponseDto home() {
-        return new ResponseDto(StateDto.SUCCESS, "登陆成功");
+        List<User> users = userService.getAllUser();
+        return new ResponseDto(StateDto.SUCCESS, users);
     }
 
     @GetMapping("/login")
